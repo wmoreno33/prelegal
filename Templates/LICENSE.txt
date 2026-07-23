@@ -1,0 +1,28 @@
+All legal document templates in this directory (Templates/) are derived from
+the Common Paper standard contract templates (https://github.com/CommonPaper),
+authored and published by Common Paper, Inc.
+
+These templates are licensed under the Creative Commons Attribution 4.0
+International License (CC BY 4.0):
+
+    https://creativecommons.org/licenses/by/4.0/
+
+You are free to:
+  - Share — copy and redistribute the material in any medium or format
+  - Adapt — remix, transform, and build upon the material for any purpose,
+    even commercially
+
+Under the following terms:
+  - Attribution — You must give appropriate credit to Common Paper, provide
+    a link to the license, and indicate if changes were made. You may do so
+    in any reasonable manner, but not in any way that suggests Common Paper
+    endorses you or your use.
+
+No additional restrictions apply beyond those of the CC BY 4.0 license.
+
+Source: https://github.com/CommonPaper
+Standards reference: https://commonpaper.com/standards/
+
+NOTE: These templates are provided for general informational purposes and do
+not constitute legal advice. Consult a qualified attorney before using any of
+these templates for an actual transaction.
