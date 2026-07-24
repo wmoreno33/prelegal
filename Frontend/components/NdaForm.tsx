@@ -1,6 +1,8 @@
 "use client";
 
 import type { NdaFormData, PartyInfo } from "@/types/nda";
+import { useLanguage } from "@/lib/i18n/language-context";
+import type { Translations } from "@/lib/i18n/translations";
 
 interface NdaFormProps {
   data: NdaFormData;
@@ -42,44 +44,46 @@ function PartyFields({
   title,
   party,
   onChange,
+  t,
 }: {
   title: string;
   party: PartyInfo;
   onChange: (party: PartyInfo) => void;
+  t: Translations["form"];
 }) {
   return (
     <fieldset className="space-y-3 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
       <legend className="px-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100">{title}</legend>
       <Field
-        label="Legal name"
+        label={t.legalName.label}
         value={party.legalName}
-        placeholder="Acme, Inc."
+        placeholder={t.legalName.placeholder}
         onChange={(v) => onChange({ ...party, legalName: v })}
       />
       <Field
-        label="Address"
+        label={t.address.label}
         value={party.address}
-        placeholder="123 Main St, San Francisco, CA 94105"
+        placeholder={t.address.placeholder}
         onChange={(v) => onChange({ ...party, address: v })}
       />
       <div className="grid grid-cols-2 gap-3">
         <Field
-          label="Signatory name"
+          label={t.signatoryName.label}
           value={party.signatoryName}
-          placeholder="Jane Doe"
+          placeholder={t.signatoryName.placeholder}
           onChange={(v) => onChange({ ...party, signatoryName: v })}
         />
         <Field
-          label="Signatory title"
+          label={t.signatoryTitle.label}
           value={party.signatoryTitle}
-          placeholder="CEO"
+          placeholder={t.signatoryTitle.placeholder}
           onChange={(v) => onChange({ ...party, signatoryTitle: v })}
         />
       </div>
       <Field
-        label="Signatory email"
+        label={t.signatoryEmail.label}
         value={party.signatoryEmail}
-        placeholder="jane@acme.com"
+        placeholder={t.signatoryEmail.placeholder}
         type="email"
         onChange={(v) => onChange({ ...party, signatoryEmail: v })}
       />
@@ -88,52 +92,64 @@ function PartyFields({
 }
 
 export default function NdaForm({ data, onChange }: NdaFormProps) {
+  const { t } = useLanguage();
+
   return (
     <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-      <PartyFields title="Party A" party={data.partyA} onChange={(partyA) => onChange({ ...data, partyA })} />
-      <PartyFields title="Party B" party={data.partyB} onChange={(partyB) => onChange({ ...data, partyB })} />
+      <PartyFields
+        title={t.form.partyA}
+        party={data.partyA}
+        onChange={(partyA) => onChange({ ...data, partyA })}
+        t={t.form}
+      />
+      <PartyFields
+        title={t.form.partyB}
+        party={data.partyB}
+        onChange={(partyB) => onChange({ ...data, partyB })}
+        t={t.form}
+      />
 
       <fieldset className="space-y-3 rounded-lg border border-zinc-200 p-4 dark:border-zinc-800">
-        <legend className="px-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100">Deal terms</legend>
+        <legend className="px-1 text-sm font-semibold text-zinc-900 dark:text-zinc-100">{t.form.dealTerms}</legend>
         <Field
-          label="Purpose"
+          label={t.form.purpose.label}
           value={data.purpose}
-          placeholder="Evaluating a potential business relationship"
+          placeholder={t.form.purpose.placeholder}
           onChange={(v) => onChange({ ...data, purpose: v })}
         />
         <Field
-          label="Effective date"
+          label={t.form.effectiveDate.label}
           value={data.effectiveDate}
           type="date"
           onChange={(v) => onChange({ ...data, effectiveDate: v })}
         />
         <div className="grid grid-cols-2 gap-3">
           <Field
-            label="MNDA term (years)"
+            label={t.form.mndaTerm.label}
             value={data.mndaTermYears}
-            placeholder="2"
+            placeholder={t.form.mndaTerm.placeholder}
             type="number"
             onChange={(v) => onChange({ ...data, mndaTermYears: v })}
           />
           <Field
-            label="Confidentiality survives (years)"
+            label={t.form.confidentialityTerm.label}
             value={data.confidentialityTermYears}
-            placeholder="3"
+            placeholder={t.form.confidentialityTerm.placeholder}
             type="number"
             onChange={(v) => onChange({ ...data, confidentialityTermYears: v })}
           />
         </div>
         <div className="grid grid-cols-2 gap-3">
           <Field
-            label="Governing law (state)"
+            label={t.form.governingLaw.label}
             value={data.governingLaw}
-            placeholder="Delaware"
+            placeholder={t.form.governingLaw.placeholder}
             onChange={(v) => onChange({ ...data, governingLaw: v })}
           />
           <Field
-            label="Jurisdiction"
+            label={t.form.jurisdiction.label}
             value={data.jurisdiction}
-            placeholder="Wilmington, Delaware"
+            placeholder={t.form.jurisdiction.placeholder}
             onChange={(v) => onChange({ ...data, jurisdiction: v })}
           />
         </div>
