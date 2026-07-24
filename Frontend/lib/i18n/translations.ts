@@ -50,6 +50,13 @@ export interface Translations {
     button: string;
     generating: string;
     error: string;
+    incomplete: string;
+  };
+  validation: {
+    required: string;
+    invalidEmail: string;
+    pastDate: string;
+    invalidNumber: string;
   };
 }
 
@@ -105,6 +112,13 @@ export const translations: Record<Lang, Translations> = {
       button: "Download PDF",
       generating: "Generating PDF…",
       error: "Couldn't generate the PDF. Please try again.",
+      incomplete: "Complete all required fields correctly to download.",
+    },
+    validation: {
+      required: "This field is required.",
+      invalidEmail: "Enter a valid email address.",
+      pastDate: "Effective date can't be in the past.",
+      invalidNumber: "Enter a whole number greater than 0.",
     },
   },
   es: {
@@ -158,6 +172,13 @@ export const translations: Record<Lang, Translations> = {
       button: "Descargar PDF",
       generating: "Generando PDF…",
       error: "No se pudo generar el PDF. Inténtalo de nuevo.",
+      incomplete: "Completa correctamente todos los campos requeridos para descargar.",
+    },
+    validation: {
+      required: "Este campo es obligatorio.",
+      invalidEmail: "Ingresa un correo electrónico válido.",
+      pastDate: "La fecha de vigencia no puede ser en el pasado.",
+      invalidNumber: "Ingresa un número entero mayor que 0.",
     },
   },
 };
